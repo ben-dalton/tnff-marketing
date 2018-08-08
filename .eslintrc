@@ -18,6 +18,11 @@
     "import/prefer-default-export": 0,
     "max-len": [1, 80],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "jsx-a11y/label-has-for": {
+      "required": {
+        "some": ["nesting", "id"]
+      }
+    },
     "jsx-a11y/anchor-is-valid": [
       "error",
       {

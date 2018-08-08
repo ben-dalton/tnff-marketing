@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import logo from '../assets/tnff-logo.png';
 // import reversedlogo from '../assets/tnff-logo-reversed.png';
@@ -28,9 +28,12 @@ const App = () => (
         <img src={logo} style={logoStyles} className="App-logo" alt="logo" />
       </header>
       <Navbar />
-      <Route exact path="/" component={About} />
-      <Route exact path="/contact" component={Contact} />
-      <Route exact path="/faq" component={FAQ} />
+      <Switch>
+        <Route exact path="/" component={About} />
+        <Route exact path="/contact" component={Contact} />
+        <Route exact path="/faq" component={FAQ} />
+        <Route path="*" component={About} />
+      </Switch>
     </div>
   </Router>
 );

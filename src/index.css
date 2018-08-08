@@ -15,6 +15,7 @@ h1 {
   font-family: 'Josefin Slab', serif;
 }
 
-.wufoo-form-container {
-  margin: 0 -7px;
+.faqCurve {
+  -webkit-shape-outside: url('./assets/egg.png');
+  shape-outside: url('./assets/egg.png');
 }

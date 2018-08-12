@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import qs from 'qs';
+import { colors } from '../utils/colors';
 
 class Contact extends Component {
   constructor() {
@@ -53,62 +54,74 @@ class Contact extends Component {
   }
   render() {
     return (
-      <div className="container" style={{ clear: 'both' }}>
-        <div style={{ fontSize: '18px', padding: '20px 0' }}>
-          Let us know if you have any questions or comments. We would love to
-          hear from you! from you!
-        </div>
-        {/* <Wufoo userName="benadalton" formHash="z13ad5h30euecdx" header="hide" /> */}
-        {this.state.response && (
-          <div className={`alert alert-${this.state.response.type}`}>
-            {this.state.response.message}
+      <div
+        className="container-fluid"
+        style={{ clear: 'both', marginBottom: '25px' }}
+      >
+        <div className="row">
+          <div className="col-md-6 offset-md-3">
+            <div style={{ fontSize: '18px', padding: '20px 0' }}>
+              Let us know if you have any questions or comments. We would love
+              to hear from you! from you!
+            </div>
+            {this.state.response && (
+              <div className={`alert alert-${this.state.response.type}`}>
+                {this.state.response.message}
+              </div>
+            )}
+            <form
+              id="contactForm"
+              method="POST"
+              action="mailer.php"
+              onSubmit={e => this.handleSubmit(e)}
+            >
+              <fieldset className="form-group">
+                <label htmlFor="form_name">Name</label>
+                <input
+                  type="text"
+                  value={this.state.contactName}
+                  className="form-control"
+                  id="form_name"
+                  onChange={e =>
+                    this.handleInputChange('contactName', e.target.value)
+                  }
+                />
+              </fieldset>
+
+              <fieldset className="form-group">
+                <label htmlFor="form_email">E-mail:</label>
+                <input
+                  value={this.state.contactEmail}
+                  className="form-control"
+                  id="form_email"
+                  type="email"
+                  onChange={e =>
+                    this.handleInputChange('contactEmail', e.target.value)
+                  }
+                />
+              </fieldset>
+
+              <fieldset className="form-group">
+                <label htmlFor="form_msg">Message:</label>
+                <textarea
+                  value={this.state.contactMessage}
+                  className="form-control"
+                  id="form_msg"
+                  onChange={e =>
+                    this.handleInputChange('contactMessage', e.target.value)
+                  }
+                />
+              </fieldset>
+              <button
+                style={{ background: colors.green, color: 'white' }}
+                className="float-right btn btn-default"
+                type="submit"
+              >
+                Submit
+              </button>
+            </form>
           </div>
-        )}
-        <form
-          id="contactForm"
-          method="POST"
-          action="mailer.php"
-          onSubmit={e => this.handleSubmit(e)}
-        >
-          <fieldset className="form-group">
-            <label htmlFor="form_name">Name</label>
-            <input
-              type="text"
-              value={this.state.contactName}
-              className="form-control"
-              id="form_name"
-              onChange={e =>
-                this.handleInputChange('contactName', e.target.value)
-              }
-            />
-          </fieldset>
-
-          <fieldset className="form-group">
-            <label htmlFor="form_email">E-mail:</label>
-            <input
-              value={this.state.contactEmail}
-              className="form-control"
-              id="form_email"
-              type="email"
-              onChange={e =>
-                this.handleInputChange('contactEmail', e.target.value)
-              }
-            />
-          </fieldset>
-
-          <fieldset className="form-group">
-            <label htmlFor="form_msg">Message:</label>
-            <textarea
-              value={this.state.contactMessage}
-              className="form-control"
-              id="form_msg"
-              onChange={e =>
-                this.handleInputChange('contactMessage', e.target.value)
-              }
-            />
-          </fieldset>
-          <button type="submit">Submit</button>
-        </form>
+        </div>
       </div>
     );
   }

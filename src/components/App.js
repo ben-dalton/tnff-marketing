@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 import About from './About';
 import Contact from './Contact';
 import FAQ from './FAQ';
+import Footer from './Footer';
 
 import { colors } from '../utils/colors';
 
@@ -34,6 +35,7 @@ const App = () => (
         <Route exact path="/faq" component={FAQ} />
         <Route path="*" component={About} />
       </Switch>
+      <Footer />
     </div>
   </Router>
 );

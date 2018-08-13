@@ -1,21 +1,44 @@
 import React from 'react';
+import { css } from 'emotion';
 import { colors } from '../utils/colors';
 
-const footerStyle = {
-  textAlign: 'center',
-  background: colors.lightblack,
-  margin: 0,
-  padding: '25px',
-  color: 'white',
+const footerStyle = css`
+  text-align: center;
+  background: ${colors.lightblack};
+  margin: 0;
+  padding: 25px;
+  color: white;
+`;
+
+const link = css`
+  color: white;
+  text-decoration: none;
+  &:focus,
+  &:active {
+    color: white;
+  }
+  &:hover {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`;
+
+const year = () => {
+  const d = new Date();
+  return d.getFullYear();
 };
 
 const Footer = () => (
-  <footer style={footerStyle}>
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-sm-6">&copy; 2018 Dalton Development</div>
-      </div>
-    </div>
+  <footer className={footerStyle}>
+    <a
+      className={link}
+      href="http://www.daltondevelopment.com"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      &copy; {year()} Dalton Development
+    </a>
   </footer>
 );
 

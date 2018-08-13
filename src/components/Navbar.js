@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { css } from 'emotion';
 
 import { colors } from '../utils/colors';
 
@@ -24,29 +25,55 @@ const liStyle = {
   fontSize: '32px',
 };
 
-const linkStyle = {
-  textDecoration: 'none',
-  color: colors.black,
-  fontWeight: 'bold',
-};
+const linkStyle = css`
+  text-decoration: none;
+  color: ${colors.black};
+  font-weight: bold;
+  padding: 5px 8px;
+  &:hover,
+  &:focus,
+  &:active {
+    color: ${colors.black};
+    text-decoration: none;
+  }
+  &:hover {
+    border-bottom: 4px solid ${colors.lightorange};
+  }
+`;
+
+const activeLink = css`
+  border-bottom: 4px solid ${colors.orange};
+  &:hover {
+    border-bottom: 4px solid ${colors.orange};
+  }
+`;
 
 const Navbar = () => (
   <div style={{ headingStyle }}>
     <ul style={ulStyle}>
       <li style={liStyle}>
-        <Link style={linkStyle} to="/">
+        <NavLink
+          exact
+          activeClassName={activeLink}
+          className={linkStyle}
+          to="/"
+        >
           About
-        </Link>
+        </NavLink>
       </li>
       <li style={liStyle}>
-        <Link style={linkStyle} to="/contact">
+        <NavLink
+          activeClassName={activeLink}
+          className={linkStyle}
+          to="/contact"
+        >
           Contact
-        </Link>
+        </NavLink>
       </li>
       <li style={liStyle}>
-        <Link style={linkStyle} to="/faq">
+        <NavLink activeClassName={activeLink} className={linkStyle} to="/faq">
           FAQ
-        </Link>
+        </NavLink>
       </li>
     </ul>
   </div>

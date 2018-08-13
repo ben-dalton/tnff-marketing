@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import qs from 'qs';
+import { css } from 'emotion';
 import { colors } from '../utils/colors';
+
+const button = css`
+  background: ${colors.orange};
+  color: white;
+  float: right;
+`;
 
 class Contact extends Component {
   constructor() {
@@ -79,6 +86,7 @@ class Contact extends Component {
                 <label htmlFor="form_name">Name</label>
                 <input
                   type="text"
+                  autoComplete="name"
                   value={this.state.contactName}
                   className="form-control"
                   id="form_name"
@@ -93,6 +101,7 @@ class Contact extends Component {
                 <input
                   value={this.state.contactEmail}
                   className="form-control"
+                  autoComplete="email"
                   id="form_email"
                   type="email"
                   onChange={e =>
@@ -112,11 +121,7 @@ class Contact extends Component {
                   }
                 />
               </fieldset>
-              <button
-                style={{ background: colors.green, color: 'white' }}
-                className="float-right btn btn-default"
-                type="submit"
-              >
+              <button className={`${button} btn btn-default`} type="submit">
                 Submit
               </button>
             </form>

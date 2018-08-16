@@ -69,7 +69,7 @@ class Contact extends Component {
           <div className="col-md-6 offset-md-3">
             <div style={{ fontSize: '18px', padding: '20px 0' }}>
               Let us know if you have any questions or comments. We would love
-              to hear from you! from you!
+              to hear from you!
             </div>
             {this.state.response && (
               <div className={`alert alert-${this.state.response.type}`}>

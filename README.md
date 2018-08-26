@@ -2,8 +2,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Development
 
-`yarn`
-`yarn start`
+```
+yarn
+yarn start
+```
 
 ## Build
 

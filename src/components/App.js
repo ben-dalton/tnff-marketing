@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import logo from '../assets/tnff-logo.png';
 // import reversedlogo from '../assets/tnff-logo-reversed.png';
@@ -26,7 +27,9 @@ const App = () => (
   <Router>
     <div className="App">
       <header style={headerStyles} className="App-header">
-        <img src={logo} style={logoStyles} className="App-logo" alt="logo" />
+        <Link to="/">
+          <img src={logo} style={logoStyles} className="App-logo" alt="logo" />
+        </Link>
       </header>
       <Navbar />
       <Switch>

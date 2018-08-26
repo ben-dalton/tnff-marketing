@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { css } from 'emotion';
 
 import { colors } from '../utils/colors';
+import { mq } from '../utils/mediaQueries';
 
 const headingStyle = {
   textAlign: 'center',
@@ -11,19 +12,23 @@ const headingStyle = {
   padding: '25px',
 };
 
-const ulStyle = {
-  textAlign: 'center',
-  listStyle: 'none',
-  fontFamily: "'Josefin Slab', serif",
-  background: colors.lightgrey,
-  margin: 0,
-};
+const ulStyle = css`
+  text-align: center;
+  list-style: none;
+  font-family: 'Josefin Slab', serif;
+  background: ${colors.lightgrey};
+  margin: 0;
+  padding-left: 0;
+`;
 
-const liStyle = {
-  display: 'inline-block',
-  padding: '20px',
-  fontSize: '32px',
-};
+const liStyle = css`
+  font-size: 24px;
+  display: inline-block;
+  padding: 20px;
+  ${mq.medium(css`
+    font-size: 32px;
+  `)};
+`;
 
 const linkStyle = css`
   text-decoration: none;
@@ -50,8 +55,8 @@ const activeLink = css`
 
 const Navbar = () => (
   <div style={{ headingStyle }}>
-    <ul style={ulStyle}>
-      <li style={liStyle}>
+    <ul className={ulStyle}>
+      <li className={liStyle}>
         <NavLink
           exact
           activeClassName={activeLink}
@@ -61,7 +66,7 @@ const Navbar = () => (
           About
         </NavLink>
       </li>
-      <li style={liStyle}>
+      <li className={liStyle}>
         <NavLink
           activeClassName={activeLink}
           className={linkStyle}
@@ -70,7 +75,7 @@ const Navbar = () => (
           Contact
         </NavLink>
       </li>
-      <li style={liStyle}>
+      <li className={liStyle}>
         <NavLink activeClassName={activeLink} className={linkStyle} to="/faq">
           FAQ
         </NavLink>
